@@ -1,6 +1,8 @@
 import React, {Fragment, useState, useRef, useEffect} from "react";
 import { List } from "./components/List";
 import {v4 as uuidv4} from "uuid";
+import "./styles.css";
+
 
 const KEY = "todoApp.todos";
 
@@ -49,13 +51,18 @@ export function App() {
 
     return (
         <Fragment>
-            <List todos={todos} toggleTodo = {toggleTodo} />
-             <input ref={taskRef} type="text" placeholder="Nueva Tarea"/>
-             <button onClick={handleAdd}> ✚ </button>
-             <button onClick={handleClearAll}> 🗑 </button>
-             <div>
-                 Te quedan {todos.filter((todo) => !todo.completed).length} tareas por terminar
-             </div>
+            <section className="container">
+                <div className="task">
+                    <List todos={todos} toggleTodo = {toggleTodo} />
+                </div>
+
+                <input className="input" ref={taskRef} type="text" placeholder="Nueva Tarea"/>
+                <button className="button" onClick={handleAdd}> ✚ </button>
+                <button  className="button" onClick={handleClearAll}> 🗑 </button>
+                <div className="divInfo">
+                    Te quedan {todos.filter((todo) => !todo.completed).length} tareas por terminar
+                </div>
+             </section>
         </Fragment>
 
     );
